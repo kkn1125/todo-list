@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/css/main.css" />
+    <title>일정 관리</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1 id="title">일정 관리</h1>
+      <div id="tools">
+        <div id="group">
+          <div id="wrapper">
+            <div id="insert-wrap">
+              <input type="text" id="insert" />
+              <span
+                id="clear"
+                onclick="this.parentNode.querySelector('input#insert').value=''"
+                >🗑️</span
+              >
+            </div>
+            <button id="btn">✒️ write</button>
+          </div>
+          <div id="counting">
+            <span id="current">0</span>
+            <span>/</span>
+            <span id="total">10</span>
+          </div>
+        </div>
+        <div id="list">
+          <div class="item">test</div>
+        </div>
+      </div>
+    </div>
+    <script src="src/scripts/main.js" type="module"></script>
+  </body>
+</html>

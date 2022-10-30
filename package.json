@@ -1,0 +1,16 @@
+{
+  "name": "accountbook",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "scripts": {
+    "dev": "vite --config vite.config.js"
+  },
+  "dependencies": {
+    "vite": "^3.2.1"
+  },
+  "devDependencies": {}
+}

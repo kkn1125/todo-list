@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html,
 body {
   margin: 0;
@@ -119,11 +120,72 @@ body {
 #app #list {
   margin-top: 2rem;
   border: 1px solid #ccc;
-  min-height: 5rem;
+  min-height: 10rem;
   padding: 2rem;
 }
 #app #list .item {
   padding: 0.3rem;
   border-bottom: 2px dashed #ddd;
   font-weight: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+#app #list .item .num {
+  text-transform: capitalize;
+  font-weight: 700;
+  user-select: none;
+}
+#app #list .item .num::after {
+  content: ".";
+}
+#app #list .item .content {
+  font-weight: 200;
+  flex: 1;
+}
+#app #list .item .time-wrap {
+  display: flex;
+  user-select: none;
+  gap: 0.3rem;
+}
+#app #list .item .time-wrap .create {
+  font-size: 0.75rem;
+}
+#app #list .item .time-wrap .create::before {
+  content: "✒️ ";
+}
+#app #list .item .time-wrap .update {
+  font-size: 0.75rem;
+}
+#app #list .item .time-wrap .update::before {
+  content: "♻️ ";
+}
+#app #list .item .time-wrap time {
+  padding: 0.2rem 0.3rem;
+  border-radius: 0.3rem;
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  -ms-border-radius: 0.3rem;
+  -o-border-radius: 0.3rem;
+}
+#app #list .item[data-value=true] .del {
+  display: none;
+}
+#app #list .item[data-value=false] {
+  color: rgba(204, 204, 204, 0.6470588235);
+}
+#app #list .item[data-value=false] .content {
+  text-decoration: line-through;
+}
+#app #list .item[data-value=false] .del {
+  user-select: none;
+  color: black;
+  cursor: pointer;
+}
+#app #list .item[data-value=false] .time-wrap .create {
+  display: none;
+}
+#app #list .item[data-value=false] .time-wrap .update::before {
+  content: "✅ ";
 }

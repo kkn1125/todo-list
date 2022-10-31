@@ -1,7 +1,7 @@
 "use strict";
 
-import Component from "./Component";
-import { $ } from "./tools";
+import Component from "./Component.js";
+import { $ } from "./tools.js";
 
 const initialMessage = "일정이 없습니다.";
 

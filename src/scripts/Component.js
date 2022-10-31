@@ -1,4 +1,4 @@
-import { $ } from "./tools";
+import { $ } from "./tools.js";
 
 class Component {
   #target;

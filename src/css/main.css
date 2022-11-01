@@ -62,11 +62,11 @@ body {
   padding: 0.5rem 0.3rem;
   border: none;
   border-bottom: 2px solid #ccc;
-  transition: 150ms ease-in-out;
-  -webkit-transition: 150ms ease-in-out;
-  -moz-transition: 150ms ease-in-out;
-  -ms-transition: 150ms ease-in-out;
-  -o-transition: 150ms ease-in-out;
+  transition: ease-in-out 150ms;
+  -webkit-transition: ease-in-out 150ms;
+  -moz-transition: ease-in-out 150ms;
+  -ms-transition: ease-in-out 150ms;
+  -o-transition: ease-in-out 150ms;
 }
 #app #group #wrapper div#insert-wrap #clear {
   opacity: 0;
@@ -95,33 +95,70 @@ body {
   color: white;
   font-size: 0.9rem;
   padding: 0.45rem 1rem;
-  border-radius: 0.3rem;
-  -webkit-border-radius: 0.3rem;
-  -moz-border-radius: 0.3rem;
-  -ms-border-radius: 0.3rem;
-  -o-border-radius: 0.3rem;
   transform: translateY(-5px);
   -webkit-transform: translateY(-5px);
   -moz-transform: translateY(-5px);
   -ms-transform: translateY(-5px);
   -o-transform: translateY(-5px);
+  border-radius: 0.3rem;
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  -ms-border-radius: 0.3rem;
+  -o-border-radius: 0.3rem;
 }
 #app #group #wrapper #btn:hover {
   cursor: pointer;
 }
 #app #group #wrapper #btn:active {
   box-shadow: none;
-  transform: translateY(0);
-  -webkit-transform: translateY(0);
-  -moz-transform: translateY(0);
-  -ms-transform: translateY(0);
-  -o-transform: translateY(0);
 }
 #app #list {
+  display: flex;
+  flex-direction: column;
   margin-top: 2rem;
   border: 1px solid #ccc;
   min-height: 10rem;
   padding: 2rem;
+  gap: 1rem;
+}
+#app #list .new-item {
+  height: 3rem;
+  position: relative;
+  border: 2px dashed #ccc;
+  opacity: 0.5;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  -ms-border-radius: 0.3rem;
+  -o-border-radius: 0.3rem;
+}
+#app #list .new-item::before {
+  content: "➕";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+}
+#app #list .new-item:hover {
+  opacity: 1;
+}
+#app #list .new-item:active {
+  border-color: rgb(37, 135, 232);
+}
+#app #list .insert-item input {
+  border: 1px solid #ccc;
+  padding: 0.5rem 0.6rem;
+  outline: none;
+  border-radius: 0.3rem;
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  -ms-border-radius: 0.3rem;
+  -o-border-radius: 0.3rem;
 }
 #app #list .item {
   padding: 0.3rem;
@@ -129,7 +166,7 @@ body {
   font-weight: 100;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
 }
 #app #list .item .num {
@@ -147,19 +184,20 @@ body {
 #app #list .item .time-wrap {
   display: flex;
   user-select: none;
+  align-items: center;
   gap: 0.3rem;
 }
 #app #list .item .time-wrap .create {
   font-size: 0.75rem;
 }
 #app #list .item .time-wrap .create::before {
-  content: "✒️ ";
+  content: "✏️ ";
 }
 #app #list .item .time-wrap .update {
   font-size: 0.75rem;
 }
 #app #list .item .time-wrap .update::before {
-  content: "♻️ ";
+  content: "📝 ";
 }
 #app #list .item .time-wrap time {
   padding: 0.2rem 0.3rem;
@@ -169,23 +207,35 @@ body {
   -ms-border-radius: 0.3rem;
   -o-border-radius: 0.3rem;
 }
-#app #list .item[data-value=true] .del {
-  display: none;
-}
-#app #list .item[data-value=false] {
-  color: rgba(204, 204, 204, 0.6470588235);
-}
-#app #list .item[data-value=false] .content {
-  text-decoration: line-through;
-}
-#app #list .item[data-value=false] .del {
-  user-select: none;
-  color: black;
+#app #list .item .time-wrap .btn {
+  margin-left: 0.3rem;
+  border: none;
   cursor: pointer;
+  padding: 0.35rem 0.3rem;
+  border-radius: 0.3rem;
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  -ms-border-radius: 0.3rem;
+  -o-border-radius: 0.3rem;
+  transition: ease-in-out 150ms;
+  -webkit-transition: ease-in-out 150ms;
+  -moz-transition: ease-in-out 150ms;
+  -ms-transition: ease-in-out 150ms;
+  -o-transition: ease-in-out 150ms;
 }
-#app #list .item[data-value=false] .time-wrap .create {
-  display: none;
+#app #list .item .time-wrap .btn.edit {
+  background-color: rgba(37, 135, 232, 0.3019607843);
 }
-#app #list .item[data-value=false] .time-wrap .update::before {
-  content: "✅ ";
+#app #list .item .time-wrap .btn.edit:hover, #app #list .item .time-wrap .btn.edit:focus-within {
+  box-shadow: 0 0 0 0.2rem rgba(37, 135, 232, 0.1490196078);
+}
+#app #list .item .time-wrap .btn.del {
+  background-color: rgba(232, 37, 86, 0.3019607843);
+}
+#app #list .item .time-wrap .btn.del:hover, #app #list .item .time-wrap .btn.del:focus-within {
+  box-shadow: 0 0 0 0.2rem rgba(232, 37, 86, 0.1490196078);
+}
+#app #list .item .time-wrap .btn:active {
+  filter: brightness(0.75);
+  -webkit-filter: brightness(0.75);
 }

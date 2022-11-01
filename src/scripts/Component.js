@@ -4,14 +4,20 @@ class Component {
   #target;
   #htmlStrings;
 
-  constructor() {}
-
-  set target(el) {
+  constructor(el) {
     this.#target = $(el);
   }
 
-  get target() {
+  getTarget() {
     return this.#target;
+  }
+
+  setHtml(htmlStrings) {
+    this.#htmlStrings = htmlStrings;
+  }
+
+  getHtml() {
+    return this.#htmlStrings;
   }
 
   format(form, time) {
@@ -49,23 +55,17 @@ class Component {
     });
   }
 
-  publish(htmlStrings) {
-    this.#htmlStrings = htmlStrings;
-    this.#update();
-  }
-
-  unPublish() {
-    this.#htmlStrings = "";
-  }
-
   getDate() {
     return new Date().getTime();
   }
+  render() {
+    this.#reset();
+    this.#update();
+  }
   #update() {
-    this.#init();
     this.#target.innerHTML = this.#htmlStrings;
   }
-  #init() {
+  #reset() {
     this.#target.innerHTML = "";
   }
 }

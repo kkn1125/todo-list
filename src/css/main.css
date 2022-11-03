@@ -122,7 +122,7 @@ body {
   gap: 1rem;
 }
 #app #list .new-item {
-  height: 3rem;
+  height: 5rem;
   position: relative;
   border: 2px dashed #ccc;
   opacity: 0.5;
@@ -150,6 +150,10 @@ body {
 #app #list .new-item:active {
   border-color: rgb(37, 135, 232);
 }
+#app #list .insert-item {
+  display: flex;
+  gap: 0.5rem;
+}
 #app #list .insert-item input {
   border: 1px solid #ccc;
   padding: 0.5rem 0.6rem;
@@ -159,6 +163,9 @@ body {
   -moz-border-radius: 0.3rem;
   -ms-border-radius: 0.3rem;
   -o-border-radius: 0.3rem;
+}
+#app #list .insert-item input[type=text] {
+  flex: 1;
 }
 #app #list .item {
   padding: 0.3rem;
@@ -207,8 +214,7 @@ body {
   -ms-border-radius: 0.3rem;
   -o-border-radius: 0.3rem;
 }
-#app #list .item .time-wrap .btn {
-  margin-left: 0.3rem;
+#app #list .btn {
   border: none;
   cursor: pointer;
   padding: 0.35rem 0.3rem;
@@ -223,19 +229,21 @@ body {
   -ms-transition: ease-in-out 150ms;
   -o-transition: ease-in-out 150ms;
 }
-#app #list .item .time-wrap .btn.edit {
+#app #list .btn.edit {
   background-color: rgba(37, 135, 232, 0.3019607843);
 }
-#app #list .item .time-wrap .btn.edit:hover, #app #list .item .time-wrap .btn.edit:focus-within {
+#app #list .btn.edit:hover, #app #list .btn.edit:focus-within {
   box-shadow: 0 0 0 0.2rem rgba(37, 135, 232, 0.1490196078);
 }
-#app #list .item .time-wrap .btn.del {
+#app #list .btn.del {
   background-color: rgba(232, 37, 86, 0.3019607843);
 }
-#app #list .item .time-wrap .btn.del:hover, #app #list .item .time-wrap .btn.del:focus-within {
+#app #list .btn.del:hover, #app #list .btn.del:focus-within {
   box-shadow: 0 0 0 0.2rem rgba(232, 37, 86, 0.1490196078);
 }
-#app #list .item .time-wrap .btn:active {
+#app #list .btn:active {
   filter: brightness(0.75);
   -webkit-filter: brightness(0.75);
 }
+
+/*# sourceMappingURL=main.css.map */

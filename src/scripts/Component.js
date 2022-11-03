@@ -1,19 +1,64 @@
 import { $ } from "./tools.js";
 
+let toggle = false;
+const insertButton = `
+<div class="new-item"></div>
+`;
+const insertForm = `
+<div class="insert-item">
+  <datalist id="data-list" class="smooth">
+    <option value="Egg" />
+  </datalist>
+  <input list="data-list" />
+  <input type="text" />
+  <button class="btn" style="padding: 0.5rem 0.8rem; background-color: #136e20;color: #fff;">check</button>
+</div>
+`;
+
+let replaces = insertButton;
+
 class Component {
   #target;
+  #originHtmlStrings;
   #htmlStrings;
 
   constructor(el) {
     this.#target = $(el);
+
+    window.addEventListener("click", (e) => {
+      e.preventDefault();
+      const target = e.target;
+      const insertBtn = target.closest(".new-item");
+      const insertItem = target.closest(".btn");
+      // TODO: 여기 손 봐야함
+      if (insertBtn) {
+        toggle = !toggle;
+        if (toggle) {
+          replaces = insertForm;
+        } else {
+          replaces = insertButton;
+        }
+      } else if (
+        target === insertItem &&
+        insertItem.parentNode.classList.contains(".insert-item")
+      ) {
+        console.log(insertItem.parentNode);
+        console.log(insertItem.previousElementSibling);
+      }
+      this.setHtml(this.#originHtmlStrings);
+      this.render();
+    });
   }
+
+  toggle() {}
 
   getTarget() {
     return this.#target;
   }
 
   setHtml(htmlStrings) {
-    this.#htmlStrings = htmlStrings;
+    this.#originHtmlStrings = htmlStrings;
+    this.#htmlStrings = this.#originHtmlStrings + replaces;
   }
 
   getHtml() {

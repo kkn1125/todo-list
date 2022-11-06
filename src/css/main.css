@@ -18,6 +18,36 @@ body {
   justify-content: space-between;
   align-items: flex-end;
 }
+#app #group #counting {
+  position: relative;
+  width: 100%;
+  background-color: gray;
+  padding: 0.3rem;
+  height: 1rem;
+  color: white;
+  overflow: hidden;
+  border-radius: 0.3rem;
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  -ms-border-radius: 0.3rem;
+  -o-border-radius: 0.3rem;
+}
+#app #group #counting #gauge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+  position: absolute;
+  background-color: #2d9826;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  transition: 150ms;
+  -webkit-transition: 150ms;
+  -moz-transition: 150ms;
+  -ms-transition: 150ms;
+  -o-transition: 150ms;
+}
 #app #group #wrapper {
   display: flex;
   gap: 1rem;
@@ -169,12 +199,15 @@ body {
 }
 #app #list .item {
   padding: 0.3rem;
-  border-bottom: 2px dashed #ddd;
+  border-bottom: 1px dashed #ddd;
   font-weight: 100;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 1rem;
+}
+#app #list .item[data-done] {
+  opacity: 0.5;
 }
 #app #list .item .num {
   text-transform: capitalize;
@@ -229,6 +262,12 @@ body {
   -ms-transition: ease-in-out 150ms;
   -o-transition: ease-in-out 150ms;
 }
+#app #list .btn.done {
+  background-color: rgba(29, 168, 59, 0.9137254902);
+}
+#app #list .btn.done:hover, #app #list .btn.done:focus-within {
+  box-shadow: 0 0 0 0.2rem rgba(37, 135, 232, 0.1490196078);
+}
 #app #list .btn.edit {
   background-color: rgba(37, 135, 232, 0.3019607843);
 }
@@ -241,9 +280,26 @@ body {
 #app #list .btn.del:hover, #app #list .btn.del:focus-within {
   box-shadow: 0 0 0 0.2rem rgba(232, 37, 86, 0.1490196078);
 }
+#app #list .btn.check {
+  color: white;
+  padding: 0.5rem 0.6rem !important;
+  background-color: rgba(41, 93, 205, 0.8745098039);
+}
+#app #list .btn.check:hover, #app #list .btn.check:focus-within {
+  box-shadow: 0 0 0 0.2rem rgba(232, 37, 86, 0.1490196078);
+}
+#app #list .btn.cancel {
+  color: white;
+  padding: 0.5rem 0.6rem !important;
+  background-color: rgba(232, 37, 86, 0.3019607843);
+}
+#app #list .btn.cancel:hover, #app #list .btn.cancel:focus-within {
+  box-shadow: 0 0 0 0.2rem rgba(232, 37, 86, 0.1490196078);
+}
 #app #list .btn:active {
   filter: brightness(0.75);
   -webkit-filter: brightness(0.75);
 }
-
-/*# sourceMappingURL=main.css.map */
+#app #list .btn:hover {
+  box-shadow: 0 0 0 0.2rem black;
+}

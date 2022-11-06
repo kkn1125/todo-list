@@ -1,64 +1,58 @@
 import { $ } from "./tools.js";
 
-let toggle = false;
-const insertButton = `
-<div class="new-item"></div>
-`;
-const insertForm = `
-<div class="insert-item">
-  <datalist id="data-list" class="smooth">
-    <option value="Egg" />
-  </datalist>
-  <input list="data-list" />
-  <input type="text" />
-  <button class="btn" style="padding: 0.5rem 0.8rem; background-color: #136e20;color: #fff;">check</button>
-</div>
-`;
-
-let replaces = insertButton;
-
 class Component {
+  #replaces;
+
   #target;
+  #current;
+  #total;
+  #gauge;
+  #currentVal = 0;
+  #totalVal = 0;
+  #gaugeVal = 0;
+
   #originHtmlStrings;
   #htmlStrings;
 
   constructor(el) {
     this.#target = $(el);
-
-    window.addEventListener("click", (e) => {
-      e.preventDefault();
-      const target = e.target;
-      const insertBtn = target.closest(".new-item");
-      const insertItem = target.closest(".btn");
-      // TODO: 여기 손 봐야함
-      if (insertBtn) {
-        toggle = !toggle;
-        if (toggle) {
-          replaces = insertForm;
-        } else {
-          replaces = insertButton;
-        }
-      } else if (
-        target === insertItem &&
-        insertItem.parentNode.classList.contains(".insert-item")
-      ) {
-        console.log(insertItem.parentNode);
-        console.log(insertItem.previousElementSibling);
-      }
-      this.setHtml(this.#originHtmlStrings);
-      this.render();
-    });
+    this.#current = $("#current");
+    this.#total = $("#total");
+    this.#gauge = $("#gauge");
   }
-
-  toggle() {}
 
   getTarget() {
     return this.#target;
   }
 
+  setCurrentVal(val) {
+    this.#currentVal = val || 0;
+  }
+  setTotalVal(val) {
+    this.#totalVal = val || 0;
+  }
+  getCurrentVal(val) {
+    return this.#currentVal;
+  }
+  getTotalVal(val) {
+    return this.#totalVal;
+  }
+
+  getOriginHtml() {
+    return this.#originHtmlStrings;
+  }
+
+  setReplaces(replace) {
+    this.#replaces = replace;
+  }
+
+  getReplaces() {
+    return this.#replaces;
+  }
+
   setHtml(htmlStrings) {
     this.#originHtmlStrings = htmlStrings;
-    this.#htmlStrings = this.#originHtmlStrings + replaces;
+    this.#htmlStrings = this.#originHtmlStrings + this.#replaces;
   }
 
   getHtml() {
@@ -104,15 +98,20 @@ class Component {
     return new Date().getTime();
   }
   render() {
-    this.#reset();
+    // this.#reset();
     this.#update();
   }
   #update() {
     this.#target.innerHTML = this.#htmlStrings;
+    this.#current.innerHTML = this.#currentVal;
+    this.#total.innerHTML = this.#totalVal;
+    this.#gaugeVal = this.#currentVal / this.#totalVal;
+    this.#gauge.style.width = `${this.#gaugeVal * 100}%`;
+    console.log(this.#gaugeVal * 100)
   }
-  #reset() {
-    this.#target.innerHTML = "";
-  }
+  // #reset() {
+  //   this.#target.innerHTML = "";
+  // }
 }
 
 export default Component;

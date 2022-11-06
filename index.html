@@ -12,50 +12,18 @@
       <h1 id="title">일정 관리</h1>
       <div id="tools">
         <div id="group">
-          <div id="wrapper">
-            <div id="insert-wrap">
-              <input type="text" id="insert" />
-              <span
-                id="clear"
-                onclick="this.parentNode.querySelector('input#insert').value=''"
-                >🗑️</span
-              >
-            </div>
-            <button id="btn">✒️ write</button>
-          </div>
           <div id="counting">
-            <span id="current">0</span>
-            <span>/</span>
-            <span id="total">10</span>
+            <span id="gauge">
+              <span>task</span>
+              <span id="current">0</span>
+              <span>/</span>
+              <span>total</span>
+              <span id="total">0</span>
+            </span>
           </div>
         </div>
         <div id="list">
-          <div class="item">
-            <span class="num"> 01 </span>
-            <span class="content">
-              <span>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui
-                mollitia eos quas, a quae magni excepturi aliquid explicabo non,
-                possimus dignissimos veniam natus accusamus ea necessitatibus
-                quia voluptate magnam minus.
-              </span>
-            </span>
-            <span class="time-wrap">
-              <!-- if first -->
-              <time class="create"> time </time>
-              <!-- else after -->
-              <time class="update"> time </time>
-              <button class="btn edit">✒️</button>
-              <button class="btn del">❌</button>
-            </span>
-          </div>
-          <!-- <div class="new-item"></div>
-          <div class="insert-item">
-            <datalist id="data-list" class="smooth">
-              <option value="Egg" />
-            </datalist>
-            <input list="data-list" />
-          </div> -->
+          <div class="item"></div>
         </div>
       </div>
     </div>

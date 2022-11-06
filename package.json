@@ -10,7 +10,7 @@
     "dev": "vite --config vite.config.js"
   },
   "dependencies": {
+    "esbuild-linux-64": "^0.15.13",
     "vite": "^3.2.1"
-  },
-  "devDependencies": {}
+  }
 }

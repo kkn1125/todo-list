@@ -11,6 +11,9 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
     server: {
       host: "localhost",
       port: 5000,
+      watch: {
+        usePolling: true,
+      },
     },
     resolve: {
       extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json"],

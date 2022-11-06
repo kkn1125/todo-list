@@ -19,6 +19,7 @@ body {
   align-items: flex-end;
 }
 #app #group #counting {
+  user-select: none;
   position: relative;
   width: 100%;
   background-color: gray;
@@ -42,11 +43,20 @@ body {
   top: 0;
   left: 0;
   bottom: 0;
-  transition: 150ms;
-  -webkit-transition: 150ms;
-  -moz-transition: 150ms;
-  -ms-transition: 150ms;
-  -o-transition: 150ms;
+  transition: 300ms ease-in-out;
+  -webkit-transition: 300ms ease-in-out;
+  -moz-transition: 300ms ease-in-out;
+  -ms-transition: 300ms ease-in-out;
+  -o-transition: 300ms ease-in-out;
+}
+#app #group #counting #text-wrap {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
 }
 #app #group #wrapper {
   display: flex;
@@ -186,13 +196,16 @@ body {
 }
 #app #list .insert-item input {
   border: 1px solid #ccc;
-  padding: 0.5rem 0.6rem;
+  padding: 0.55rem 0.7rem;
   outline: none;
   border-radius: 0.3rem;
   -webkit-border-radius: 0.3rem;
   -moz-border-radius: 0.3rem;
   -ms-border-radius: 0.3rem;
   -o-border-radius: 0.3rem;
+}
+#app #list .insert-item input[list=data-list] {
+  width: 3rem;
 }
 #app #list .insert-item input[type=text] {
   flex: 1;
@@ -205,6 +218,7 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  user-select: none;
 }
 #app #list .item[data-done] {
   opacity: 0.5;
@@ -212,7 +226,7 @@ body {
 #app #list .item .num {
   text-transform: capitalize;
   font-weight: 700;
-  user-select: none;
+  font-size: 0.9rem;
 }
 #app #list .item .num::after {
   content: ".";
@@ -223,7 +237,6 @@ body {
 }
 #app #list .item .time-wrap {
   display: flex;
-  user-select: none;
   align-items: center;
   gap: 0.3rem;
 }
@@ -234,7 +247,7 @@ body {
   content: "✏️ ";
 }
 #app #list .item .time-wrap .update {
-  font-size: 0.75rem;
+  font-size: 0.65rem;
 }
 #app #list .item .time-wrap .update::before {
   content: "📝 ";
@@ -249,6 +262,8 @@ body {
 }
 #app #list .btn {
   border: none;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.25rem !important;
   cursor: pointer;
   padding: 0.35rem 0.3rem;
   border-radius: 0.3rem;
@@ -282,15 +297,13 @@ body {
 }
 #app #list .btn.check {
   color: white;
-  padding: 0.5rem 0.6rem !important;
   background-color: rgba(41, 93, 205, 0.8745098039);
 }
 #app #list .btn.check:hover, #app #list .btn.check:focus-within {
-  box-shadow: 0 0 0 0.2rem rgba(232, 37, 86, 0.1490196078);
+  box-shadow: 0 0 0 0.2rem rgba(41, 93, 205, 0.1490196078);
 }
 #app #list .btn.cancel {
   color: white;
-  padding: 0.5rem 0.6rem !important;
   background-color: rgba(232, 37, 86, 0.3019607843);
 }
 #app #list .btn.cancel:hover, #app #list .btn.cancel:focus-within {

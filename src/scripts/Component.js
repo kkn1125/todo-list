@@ -106,8 +106,7 @@ class Component {
     this.#current.innerHTML = this.#currentVal;
     this.#total.innerHTML = this.#totalVal;
     this.#gaugeVal = this.#currentVal / this.#totalVal;
-    this.#gauge.style.width = `${this.#gaugeVal * 100}%`;
-    console.log(this.#gaugeVal * 100)
+    this.#gauge.style.width = `${(this.#gaugeVal || 0) * 100}%`;
   }
   // #reset() {
   //   this.#target.innerHTML = "";

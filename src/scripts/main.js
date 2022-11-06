@@ -45,6 +45,16 @@ class ArrayComponent extends Component {
   #template = () =>
     this.stacks
       .filter((item) => item.visible && !item.deleted)
+      .sort((a, b) => {
+        if (a.id - b.id > 0) {
+          return 1;
+        } else if (a.id - b.id < 0) {
+          return -1;
+        } else {
+          return 0;
+        }
+      })
+      .sort((a, b) => (a.done ? 1 : -1))
       .map(
         (
           { id, category, content, visible, deleted, done, create, update },
@@ -114,14 +124,14 @@ class ArrayComponent extends Component {
             return 0;
           }
         });
-      this.id = this.stacks.slice(-1)[0].id + 1;
+      if (this.stacks.length > 0) {
+        this.id = this.stacks.slice(-1)[0].id + 1;
+      }
     }
 
     super.setReplaces(this.#insertButton);
-    super.setCurrentVal(this.stacks.filter((item) => !item.done).length);
-    super.setTotalVal(this.size());
-    super.setHtml(this.#template());
-    super.render();
+    this.preUpdate();
+
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         super.setReplaces(this.#insertButton);
@@ -188,7 +198,7 @@ class ArrayComponent extends Component {
   }
   preUpdate() {
     super.setHtml(this.#template());
-    super.setCurrentVal(this.stacks.filter((item) => !item.done).length);
+    super.setCurrentVal(this.stacks.filter((item) => item.done).length);
     super.setTotalVal(this.size());
     super.render();
     localStorage.setItem("tasks", JSON.stringify(this.stacks));
@@ -202,9 +212,22 @@ class ArrayComponent extends Component {
     this.preUpdate();
   }
   update(data) {
-    this.stacks = this.stacks.map((item) =>
-      item.id === data.id ? { ...item, ...data } : item
-    );
+    console.log(data);
+    this.stacks = this.stacks.map((item) => {
+      if (item.id === data.id) {
+        if (
+          Object.entries(data).every(([k, v]) =>
+            k === "update" ? true : v === item[k]
+          )
+        ) {
+          return item;
+        } else {
+          return { ...item, ...data };
+        }
+      } else {
+        return item;
+      }
+    });
   }
   delete(data) {
     this.stacks.splice(this.findIndex(data.id));

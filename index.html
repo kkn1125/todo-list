@@ -1,31 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="src/css/main.css" />
     <title>Tasks</title>
   </head>
   <body>
-    <div id="app">
-      <h1 id="title">Tasks</h1>
-      <div id="tools">
-        <div id="group">
-          <div id="counting">
-            <span id="gauge"> </span>
-            <span id="text-wrap">
-              <span id="current">0</span>
-              <span>/</span>
-              <span id="total">0</span>
-            </span>
-          </div>
-        </div>
-        <div id="list">
-          <div class="item"></div>
-        </div>
-      </div>
-    </div>
-    <script src="src/scripts/main.js" type="module"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

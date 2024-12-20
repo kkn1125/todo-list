@@ -1,16 +1,54 @@
 {
-  "name": "accountbook",
-  "version": "1.0.0",
-  "main": "index.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "name": "tasklist",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "author": {
+    "email": "chaplet01@gmail.com",
+    "name": "devkimson",
+    "url": "https://kkn1125.github.io/"
+  },
   "scripts": {
-    "dev": "vite --config vite.config.js"
+    "dev": "vite",
+    "test": "vitest",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "esbuild-linux-64": "^0.15.13",
-    "vite": "^3.2.1"
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.2.1",
+    "@mui/material": "^6.2.1",
+    "@mui/x-data-grid": "^7.23.3",
+    "@mui/x-date-pickers": "^7.23.3",
+    "dayjs": "^1.11.13",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.0.2",
+    "recoil": "^0.7.7",
+    "uuid": "^11.0.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@types/node": "^22.10.2",
+    "@types/react": "^18.3.17",
+    "@types/react-dom": "^18.3.5",
+    "@types/uuid": "^10.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "dotenv": "^16.4.7",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.13.0",
+    "jsdom": "^25.0.1",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "^8.18.1",
+    "vite": "^6.0.3",
+    "vite-tsconfig-paths": "^4.3.2",
+    "vitest": "^2.1.8"
   }
 }

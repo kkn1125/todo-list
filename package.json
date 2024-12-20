@@ -12,7 +12,9 @@
     "dev": "vite",
     "test": "vitest",
     "build": "tsc -b && vite build",
+    "postbuild": "touch dist/.nojekyll",
     "lint": "eslint .",
+    "deploy": "cd dist && git init && git add -A && git commit -m \"gh-pages\" && git push https://github.com/kkn1125/todo-list.git master:gh-pages --force",
     "preview": "vite preview"
   },
   "dependencies": {

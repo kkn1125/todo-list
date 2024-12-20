@@ -42,6 +42,7 @@ export default defineConfig(({ mode }) => {
       host: HOST,
       port: PORT,
     },
+    base: MODE === "development" ? "/" : "/todo-list/",
     plugins: [react(), tsconfigPaths()],
   };
 });

@@ -1,3 +1,4 @@
+import { PATH } from "@common/variable";
 import HomePage from "@component/page/HomePage";
 import NotFoundPage from "@component/page/NotFoundPage";
 import Layout from "@component/template/Layout";
@@ -8,8 +9,8 @@ const AppRoot: React.FC<AppRootProps> = () => {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path='*' element={<NotFoundPage />} />
+        <Route path={PATH} element={<HomePage />} />
+        <Route path={`${PATH}*`} element={<NotFoundPage />} />
       </Route>
     </Routes>
   );
